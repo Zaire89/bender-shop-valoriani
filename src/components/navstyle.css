@@ -1,0 +1,29 @@
+.nav-bar {
+    height: auto;
+    width: 450px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+}
+ 
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-bar a:hover {
+    color: rgb(248, 212, 145);
+}
+
+.nav-bar a:active {
+    color: rgb(175, 72, 4);
+}
+
+.nav-bar li ul {
+    display: none;
+}
+
+.nav-bar li ul:hover li {
+    display: block;
+}
