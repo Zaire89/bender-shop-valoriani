@@ -1,0 +1,55 @@
+@import url ('https://fonts.googleapis.com/css2? family = Roboto & display = swap');
+@import url ('https://fonts.googleapis.com/css2? family = Almendra: ital @ 0; 1 & display = swap');
+
+.logo {
+    display: block;
+    flex-direction: row;
+    justify-content: left;
+    margin-left: 15px;
+}
+
+.menu ul {
+    display: inline-block;
+    flex-direction: row;
+    margin-top: 12px;
+
+}
+
+.nav-item {
+    list-style: none;
+    display: inline-block;
+    padding-left: 18px;
+    font-family: Almendra;
+    font-weight: 300;
+}
+
+.nav-item a:hover{
+    color: rgb(92, 41, 7);
+    text-decoration: none;
+}
+
+.nav-item a {
+    display: block;
+    color: rgb(248, 214, 151);
+}
+
+
+.nav-item a:active {
+    color: grey;
+}
+
+.dropdown-menu {
+    background-color: grey;
+}
+
+
+
+#descarga {
+    display: block;
+    flex-direction: row;
+    justify-content: right;
+    color: black;
+    background-color: rgb(219, 120, 39);
+    border-radius: 60%;
+    font-family: Almendra;
+}
