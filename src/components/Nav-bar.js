@@ -5,7 +5,7 @@ import './Nav-bar.css';
 
 export const NavBar =() => {
     return (
-        <nav class="navbar navbar-expand-lg bg-dark  d-flex flex-row" className="navBarrr">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-light d-flex flex-row" className="navBarrr">
 
             <a class="navbar-brand" href="#" className="logo" class="ml-auto"> <img src={logo01} alt="logo" height="80px" /></a>
             
