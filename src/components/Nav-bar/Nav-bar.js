@@ -1,15 +1,16 @@
 import React from 'react';
-import logo01 from './logo01.png';
+import logo01 from '../../components/logo01.png';
 import './Nav-bar.css';
+import CartWidget from '../CartWidget/CartWidget';
 
 
 export const NavBar =() => {
     return (
-        <nav class="navbar navbar-expand-lg bg-dark navbar-light d-flex flex-row" className="navBarrr">
+        <nav class="navbar navbar-expand-lg  bg-dark d-flex flex-row" className="navBarrr">
 
-            <a class="navbar-brand" href="#" className="logo" class="ml-auto"> <img src={logo01} alt="logo" height="80px" /></a>
+            <a class="navbar-brand" href="#" className="logo" class="ml-auto"> <img src={logo01} alt="logo" style={{width:"80px"}} /></a>
             
-            <div class="collapse navbar-collapse d-flex flex-row justify-content-end" id="navbarNav" >
+            <div class="collapse navbar-collapse d-flex flex-row justify-content-end" >
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#"> Inicio </a>
@@ -25,10 +26,11 @@ export const NavBar =() => {
                     <li class="nav-item">
                         <a class="nav-link" href="#"> Contacto </a>
                     </li>
-
+                    <button class="btn my-2 my-sm-0 my-lg-0" type="submit" id="descarga" >Descargar Juego</button>
                 </ul>
-
-                <button class="btn my-2 my-sm-0 my-lg-0" type="submit" id="descarga" >Descargar Juego</button>
+                
+                < CartWidget />
+                
             </div>
 
 

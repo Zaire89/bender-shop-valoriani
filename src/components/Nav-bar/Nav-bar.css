@@ -1,6 +1,7 @@
 @import url ('https://fonts.googleapis.com/css2? family = Roboto & display = swap');
 @import url ('https://fonts.googleapis.com/css2? family = Almendra: ital @ 0; 1 & display = swap');
 
+
 .logo {
     display: block;
     flex-direction: row;
@@ -8,11 +9,10 @@
     margin-left: 15px;
 }
 
-.menu ul {
+ul {
     display: inline-block;
     flex-direction: row;
     margin-top: 12px;
-
 }
 
 .nav-item {
@@ -52,4 +52,5 @@
     background-color: rgb(219, 120, 39);
     border-radius: 60%;
     font-family: Almendra;
+    margin-left: 30px;
 }
