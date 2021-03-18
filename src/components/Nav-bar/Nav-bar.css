@@ -1,5 +1,5 @@
-@import url ('https://fonts.googleapis.com/css2? family = Roboto & display = swap');
-@import url ('https://fonts.googleapis.com/css2? family = Almendra: ital @ 0; 1 & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Roboto & display = swap');
+@import url('https://fonts.googleapis.com/css2? family = Almendra: ital @ 0; 1 & display = swap');
 
 
 .logo {
@@ -14,7 +14,10 @@ ul {
     flex-direction: row;
     margin-top: 12px;
 }
-
+.navbar {
+    display: inline-block;
+    background-color: rgb(39, 39, 39);
+}
 .nav-item {
     list-style: none;
     display: inline-block;

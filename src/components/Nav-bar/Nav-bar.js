@@ -6,9 +6,11 @@ import CartWidget from '../CartWidget/CartWidget';
 
 export const NavBar =() => {
     return (
-        <nav class="navbar navbar-expand-lg  bg-dark d-flex flex-row" className="navBarrr">
+        <nav class="navbar navbar-expand-lg d-flex flex-row" >
+        
+            {/*  para comentar corchetes-asterico-barra */}
 
-            <a class="navbar-brand" href="#" className="logo" class="ml-auto"> <img src={logo01} alt="logo" style={{width:"80px"}} /></a>
+            <a class="navbar-brand" href="#" className="logo" class="ml-auto"> <img src={logo01} alt="logo" style={{width:"80px"}} /></a> 
             
             <div class="collapse navbar-collapse d-flex flex-row justify-content-end" >
                 <ul class="navbar-nav mr-auto">
