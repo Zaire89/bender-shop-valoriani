@@ -1,7 +1,8 @@
 import './App.css';
 import NavBar from './components/Nav-bar/Nav-bar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import { ItemCount } from './components/ItemCount/ItemCount';
+
+
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
       <NavBar />
       
       <div class="row justify-content-around ">
-        <ItemCount stock="15" initial="0" />
-        <ItemListContainer />
+
+        <ItemListContainer presenta="Bienvenido a tu carrito!"/>
       </div>
 
 

@@ -1,0 +1,9 @@
+.tarjeta {
+    width: 300px;
+    background-color: bisque;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    margin: 18px;
+   
+}
