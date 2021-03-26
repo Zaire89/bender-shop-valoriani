@@ -1,7 +1,7 @@
 import './App.css';
 import NavBar from './components/Nav-bar/Nav-bar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <ItemListContainer presenta="Bienvenido a tu carrito!"/>
       </div>
 
-
+      <ItemDetailContainer />
     </div>
   );
 }
