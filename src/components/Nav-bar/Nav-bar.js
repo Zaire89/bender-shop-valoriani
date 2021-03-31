@@ -3,6 +3,7 @@ import logo01 from '../../components/logo01.png';
 import './Nav-bar.css';
 import CartWidget from '../CartWidget/CartWidget';
 
+import { Link } from 'react-router-dom';
 
 export const NavBar =() => {
     return (
@@ -10,21 +11,21 @@ export const NavBar =() => {
         
             {/*  para comentar corchetes-asterico-barra */}
 
-            <a class="navbar-brand" href="#" className="logo" class="ml-auto"> <img src={logo01} alt="logo" style={{width:"80px"}} /></a> 
+            <Link to='/' class="navbar-brand" className="logo" class="ml-auto"> <img src={logo01} alt="logo" style={{width:"80px"}} /></Link> 
             
             <div class="collapse navbar-collapse d-flex flex-row justify-content-end" >
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"> Inicio </a>
+                        <Link to='/' class="nav-link" > Inicio </Link>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#listado" id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Productos </a>
+                    <Link class="nav-item dropdown">
+                        <Link to='/categoria' class="nav-link dropdown-toggle"  id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Productos </Link>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
-                            <a class="dropdown-item" href="#"> Remeras </a>
-                            <a class="dropdown-item" href="#"> Tazas </a>
-                            <a class="dropdown-item" href="#"> Túnicas virtuales </a>
-                        </div>
-                    </li>
+                            <Link to={`/categoria/indumentaria`} class="dropdown-item" > Indumentaria </Link>
+                            <Link to={`/categoria/bazar`} class="dropdown-item"> Bazar </Link>
+                            <Link to={`/categoria/virtual`} class="dropdown-item" href="#"> Túnicas virtuales </Link>
+                        </div>  
+                    </Link>
                     <li class="nav-item">
                         <a class="nav-link" href="#"> Contacto </a>
                     </li>

@@ -43,8 +43,8 @@ export function ItemCount ({stock, initial, onAdd}) {
 
                 <div  class="row d-flex justify-content-around pt-3" >
                     <button className="btn btn-secondary w-75"
-                    type="button" disabled={contar < 1 || contar >= stock}
-                    onClick={anyadir}> Agregar  <span class="iconify" data-icon="icons8:buy" data-inline="false" id="carAnimate"></span></button>
+                    type="button" disabled={contar < 1 || contar >= stock} onClick={anyadir} 
+                    > Agregar  <span class="iconify" data-icon="icons8:buy" data-inline="false" id="carAnimate"></span></button>
                 </div>
 
             </div>
