@@ -3,10 +3,6 @@
 ## Tienda online de productos BenederAO. 
 Juego Online http://bender-online.com.ar/
 
-Proyecto realizado con CREATE REACT APP (https://github.com/facebook/create-react-app).
-
-Este sitio utiliza framework Bootstrap "https://getbootstrap.com".
-
 ------------------------------------------------
 
 ### Para iniciar:
@@ -22,3 +18,10 @@ Tenemos el Count para agregar o restar la cantidad que queremos y el botón "Agr
  En "Contacto" se podrá ver direcciones de correo, redes y demás datos.
  
  Por último hay un botón "Descarga" que redireccionará a un link exterior para descargar el juego.  
+ 
+ ------------------------------------------------
+ 
+ 
+Proyecto realizado con CREATE REACT APP (https://github.com/facebook/create-react-app).
+
+Este sitio utiliza framework Bootstrap "https://getbootstrap.com".
