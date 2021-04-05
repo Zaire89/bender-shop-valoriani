@@ -1,11 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router';
+import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import '../ItemDetail/ItemDetail.css';
+import ItemCount  from '../ItemCount/ItemCount';
 
 export default function ItemDetail({producto}) {
 
     const {item} = useParams()
 
+    const [contar, setContar] = useState(0);
+
+    const contador = (e) => {
+        console.log ('Hay' +  e  + 'productos agregados' )
+        setContar(e)
+    };
+  
     return(
         <div class='d-flex justify-content-center' className="tarjeta-detalle">
             <tr>
@@ -17,6 +25,19 @@ export default function ItemDetail({producto}) {
                 </td>
             </tr>
             
+
+            {/*  llaves = avisa q es Javascript 
+            FUNCION IF - ELSE  ------- un ternario (3partes: 1condicion IF - Resultado p eso - Opuesto ELSE con su Resultado  */}
+            {
+              contar == 0 ?
+                <ItemCount stock="15" initial="0" onAdd={contador} />
+             :
+                <div class="row d-flex justify-content-around pt-3" >
+                    <Link to='/Cart'>< button className="btn btn-secondary" type="button"> Confirmar Compra </button></Link>
+                </div>
+            }
+            
+
             {item}
             
         </div>

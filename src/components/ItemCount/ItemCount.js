@@ -16,10 +16,9 @@ export function ItemCount ({stock, initial, onAdd}) {
         setContar (contar - 1);
     };
 
-    
     const anyadir = () => {
-       onAdd(contar);
-    };
+        onAdd(contar)
+    }
 
     return (
         
