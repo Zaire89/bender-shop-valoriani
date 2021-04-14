@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import '../ItemDetail/ItemDetail.css';
 import ItemCount  from '../ItemCount/ItemCount';
+import { cartContext } from "../../context/CartContext";
 
 export default function ItemDetail({producto}) {
 
     const {item} = useParams()
+    const {addItem} = useContext(cartContext);
 
     const [contar, setContar] = useState(0);
 
@@ -13,6 +15,10 @@ export default function ItemDetail({producto}) {
         console.log ('Hay' +  e  + 'productos agregados' )
         setContar(e)
     };
+
+    const cerrarCompra = () => {
+        addItem(producto, contar)
+    }
   
     return(
         <div class='d-flex justify-content-center' className="tarjeta-detalle">
@@ -33,7 +39,7 @@ export default function ItemDetail({producto}) {
                 <ItemCount stock="15" initial="0" onAdd={contador} />
              :
                 <div class="row d-flex justify-content-around pt-3" >
-                    <Link to='/Cart'>< button className="btn btn-secondary" type="button"> Confirmar Compra </button></Link>
+                    <Link to='/Cart'>< button className="btn btn-secondary" type="button" onClick={cerrarCompra}> Confirmar Compra </button></Link>
                 </div>
             }
             
