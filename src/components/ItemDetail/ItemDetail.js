@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import '../ItemDetail/ItemDetail.css';
 import ItemCount  from '../ItemCount/ItemCount';
-import { cartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 export default function ItemDetail({producto}) {
 
     const {item} = useParams()
-    const {addItem} = useContext(cartContext);
+    const {addItem} = useContext(CartContext);
 
     const [contar, setContar] = useState(0);
 

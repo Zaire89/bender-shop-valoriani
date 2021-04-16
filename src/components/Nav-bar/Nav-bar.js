@@ -32,7 +32,10 @@ export const NavBar =() => {
                     <button class="btn my-2 my-sm-0 my-lg-0" type="submit" id="descarga" >Descargar Juego</button>
                 </ul>
                 
-                < CartWidget />
+                <div>
+                    < CartWidget />
+                </div>
+                
                 
             </div>
 
