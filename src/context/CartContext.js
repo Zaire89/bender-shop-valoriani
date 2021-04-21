@@ -1,16 +1,32 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
-export const CartContext = React.createContext({});
+const CartContext = React.createContext([]);
 
-export const CartPorvider = ( {children} ) => {
+const CartPorvider = ( {children} ) => {
 
-    const [cart, setCart] = useState({})
+    const [cart, setCart] = useState([]);
+    const [totalIt, setTotalIt] = useState(0);
+    const [totalSub, setTotalSub] = useState();
 
+    useEffect( () => {
+        let precio = cart.reduce((acumulador, actual)=>{
+            const sub = actual.cantidad * actual.item.precio;
+            return acumulador + sub;
+        },0)
 
+        let todos = cart.reduce((acumulador, actual)=>{
+            return acumulador + actual.cantidad;
+        },0);
+       
+        setTotalIt(todos);
+        setTotalSub(precio);
+
+    },[cart])
 
     const addItem = (newItem, quantity) => {
-        const actualItem = cart.find( e=> e.item.id === newItem.id)
-        if (actualItem === -1) {
+
+        const actualItem = cart.findIndex( e => e.item.id === newItem.id)
+        if (actualItem < 0 ) {
             setCart(cart => [...cart,
                 { item: newItem, cantidad: quantity }]);
         } else {
@@ -32,14 +48,14 @@ export const CartPorvider = ( {children} ) => {
     }
 
     const isInCart = (id) => {
-        const actualItem = cart.find(e=> e.item.id === id)
+        const aclItem = cart.find(e=> e.item.id === id)
 
-        return actualItem ? true : false
+        return aclItem ? true : false
     }
 
-    return <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart}}>
+    return <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart, totalIt, totalSub}}>
         {children} </CartContext.Provider>
 }
 
 
-export default CartContext;
+export {CartContext, CartPorvider};

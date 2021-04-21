@@ -1,43 +1,45 @@
 import React, {useEffect, useState} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import buzo03 from '../../components/imgs-mercha/buzo03.jpg';
+
+import {getFirestore} from "../../firebase/index";
 
 import { useParams } from "react-router-dom";
 
-const getProductos = () => {
 
+const getProductos = (id) => {
 
-    return new Promise((res) => {
-        setTimeout(() => {
-            res({
-                titulo: "producto 1",
-                imagen: buzo03,
-                precio: 500,
-   
-            })
-        }, 2000)
-    })
+    const db = getFirestore();
+    const itemsCollection = db.collection('producto');
 
+    const item = itemsCollection.doc(id)
+    return item.get();
 
 }
 
 export default function ItemDetailContainer() {
-    const [producto, getRep] = useState(null)
-
-    const {itemId, otroId} = useParams()
+    const [producto, getRep] = useState([])
+    const {itemId} = useParams()
 
     useEffect(() => {
-        getProductos().then((res)=> getRep(res))
+
+        getProductos(itemId).then((res)=> {
+            if (res.exists) {
+                getRep({id:res.id, ...res.data()})
+            }
+        })
         return;
-    }, [])
+    }, [itemId])
 
-    return <> {itemId} - {otroId}
+    return (
+     
+        <div class="d-flex justify-content-center" >
+            {itemId}
+            <ItemDetail producto={producto} /> 
+        </div>
 
-    <div class="d-flex justify-content-center" >
-        <ItemDetail producto={producto} /> 
-    </div>
+    ) 
+
     
-    </>
 }
 
 

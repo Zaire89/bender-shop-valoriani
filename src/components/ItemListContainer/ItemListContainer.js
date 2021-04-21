@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import '../ItemListContainer/ItemListContainer.css';
 import ItemList from '../ItemList/ItemList';
-import List from '../List';
+
+import {getFirestore} from "../../firebase";
+
 import { useParams } from "react-router-dom";
 
 
@@ -10,32 +12,33 @@ const ItemListContainer = (props) => {
 
     const [producto, setProductos] = useState([])
 
-    const {categoriaId} = useParams()
+    const {id} = useParams()
 
     
     useEffect(() => {
 
-        const grupo = new Promise((res, rej) => {
-            setTimeout(() => {
-                if (categoriaId) {
-                    const prodFiltrados = List.filter((producto) => {
-                        return producto.categoria === categoriaId;
-                    });
-                    res (prodFiltrados);
-                } else {
-                    res (List);
-             
-                }
-            },2000)
-        })
+        const db = getFirestore();
+        const itemsCollection = db.collection('producto');
+            
+        const filtroCat = id ? itemsCollection.where('categoriaId', '==', id) : itemsCollection;
 
-        grupo.then((listadoLimpio) => {
-            setProductos(listadoLimpio);
+        filtroCat.get().then((snapshot) => {
+            console.log('datos')
+            
+            if (snapshot.size > 0){
+                console.log(snapshot.docs.map(doc => doc.data()))
+
+                setProductos(snapshot.docs.map(doc => {
+                return {id:doc.id, ...doc.data()}
+                }
+                ))
+            }
+    
         })
         
          
       
-    }, )
+    }, [id])
 
         
     
@@ -45,7 +48,7 @@ const ItemListContainer = (props) => {
         <div class="container-fluid">
             
             <h1> {props.presenta} </h1>
-            <h2> {categoriaId} </h2>
+            <h2> {id} </h2>
             <div class="d-flex justify-content-center">
                 <ItemList producto={producto}/>
             </div>

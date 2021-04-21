@@ -1,52 +1,66 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
+import {Link} from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 
 export const Cart = () => {
 
 
-    const { cart, addItem, removeItem, clear, isInCart } = useContext(CartContext);
+    const { cart, totalIt, totalSub, removeItem, clear } = useContext(CartContext);
+
+
+
+    if(totalIt===0) return( <h1 id="msg-cart">VACÍO<br/><Link to='/'>Ir a Home</Link></h1>)
         
-    const [totalIt, setTotalIt] = useState(0)
-    const [totalSub, setTotalSub] = useState(0)
-    
-    useEffect( () => {
-        let precio=0;
-        let todos=0;
-        for (const cartItem of cart) {
-            todos += cartItem.quantity;
-            precio += cartItem.quantity * cartItem.item.precio
-        }
-        setTotalIt(todos);
-        setTotalSub(precio);
+    return (
+        <table>
+            <thead>
+                <tr class='item_carrito'>
+                    <th style={{width:'500px'}} scope="col">Vista</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Remove</th>
+                </tr>
+            </thead>
+        
 
-    },[cart])
+            <tbody>
 
-    return(
-        <div>
-            { !cart.lenght ? 
-            <h3>EMPTY</h3> 
-            : (<>
+                {
+                    cart.map(cartItem => (
+                        <tr>
+                            <td>
+                                {cartItem.item.titulo}
+                                <img src={cartItem.item.imagen}  width="90" height="100" alt='imgItem'></img>
+                            </td>
+                            <td>{cartItem.quantity}</td>
+                            <td>{cartItem.quantity * cartItem.item.precio}</td>
+                            <td><button onClick={()=> removeItem(cartItem.item.id) }><Link>BORRAR</Link></button></td>
+                        </tr>
 
-                {cart.map(cartItem => 
-                    <div key={cartItem.item.id}>
-                    <div>Título:{cartItem.item.titulo}</div><div>cantidad:{cartItem.quantity}</div><button onClick={()=> removeItem(cartItem.item.id) }>BORRAR</button>
-                    </div>
-                )
-                }
-                
-                
-
-                <div> Añadiste: {totalIt} productos.
-                    Total de compra: {totalSub}
+                        
+                        
+                    ))
                     
-                    } </div>
-                </>
-            )}
+                }
+            </tbody>
+
+            <thead>
+                <tr>
+                    <th>TOTAL</th>
+                    <th>{totalIt}</th>
+                    <th>{totalSub}</th>
+                    <th onClick={clear}><Link>Eliminar</Link></th>
+                </tr>
+            </thead>
 
 
 
-        </div>
+        </table>
     )
+
+
+
+
 }
 
 export default Cart;
