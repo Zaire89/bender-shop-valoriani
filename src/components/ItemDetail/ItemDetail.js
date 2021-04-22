@@ -4,6 +4,7 @@ import '../ItemDetail/ItemDetail.css';
 import ItemCount  from '../ItemCount/ItemCount';
 import { CartContext } from "../../context/CartContext";
 
+
 export default function ItemDetail({producto}) {
 
     const [contar, setContar] = useState(0);
@@ -19,9 +20,14 @@ export default function ItemDetail({producto}) {
     const agregarAlCarrito = () => {
         addItem(producto, contar)
     }
-  
+
+
+
     return(
-        <div class='d-flex justify-content-center' className="tarjeta-detalle" id={producto.id}>
+  
+
+        <div class='d-flex justify-content-center' className="tarjeta-detalle">
+               
             <tr>
                 <td class='text-center'>
                     <h1>{producto.titulo}</h1>
@@ -31,7 +37,7 @@ export default function ItemDetail({producto}) {
                 </td>
             </tr>
             
-            
+          
 
             {/*  llaves = avisa q es Javascript 
             FUNCION IF - ELSE  ------- un ternario (3partes: 1condicion IF - Resultado p eso - Opuesto ELSE con su Resultado  */}
@@ -47,4 +53,6 @@ export default function ItemDetail({producto}) {
             
         </div>
     )
+
+
 }

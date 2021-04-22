@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import '../Item/Item.css';
 
 
-const Item = ({producto}) => {
+export const Item = ({producto}) => {
     return (
 
         <div className="tarjeta" >

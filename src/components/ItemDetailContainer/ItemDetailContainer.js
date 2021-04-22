@@ -10,37 +10,41 @@ const getProductos = (id) => {
 
     const db = getFirestore();
     const itemsCollection = db.collection('producto');
-
-    const item = itemsCollection.doc(id)
-    return item.get();
+ 
+    const itemId = itemsCollection.doc(id)
+    console.log(itemId)
+    return itemId.get();
 
 }
 
-export default function ItemDetailContainer() {
+const ItemDetailContainer = ()=> {
     const [producto, getRep] = useState([])
-    const {itemId} = useParams()
+    const {itemId, otroId} = useParams()
+    console.log(itemId)
 
     useEffect(() => {
 
+        
         getProductos(itemId).then((res)=> {
             if (res.exists) {
                 getRep({id:res.id, ...res.data()})
             }
+            console.log(itemId)
         })
         return;
     }, [itemId])
 
     return (
-     
+        
         <div class="d-flex justify-content-center" >
-            {itemId}
+            {itemId} - {otroId}
             <ItemDetail producto={producto} /> 
         </div>
 
-    ) 
+    );
 
     
-}
+};
 
 
-
+export default ItemDetailContainer;
