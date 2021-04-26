@@ -1,0 +1,41 @@
+.carrito {
+    background-color:antiquewhite;
+    height: 800px;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    padding: 15px;
+}
+
+
+.datos {
+    height: 200px;
+}
+
+
+.delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+}
+
+form {
+    background-color: rgb(194, 193, 193);
+    padding: 20px;
+    display: flex;
+    flex-direction:column;
+   
+}
+
+form input {
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+button {
+    margin-top: 15px;
+    padding-bottom: 10px;
+    align-items: center;
+}

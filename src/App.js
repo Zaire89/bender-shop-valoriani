@@ -29,7 +29,6 @@ function App() {
 
             <Route path='/categoria/:categoriaId'>
               <div class="row justify-content-around ">
-
                 <ItemListContainer presenta="Nuestros Productos!"/>
               </div>
             </Route>

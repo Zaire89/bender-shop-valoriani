@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../ItemCount/ItemCount.css';
+//import { CartContext } from '../../context/CartContext'
 
 /* boton suma o resta: maximo, inicio, evento función*/
 export function ItemCount ({stock, initial, onAdd}) {
                         {/* parsea* el número, para q no sea 111111*/}
     const [contar, setContar] = useState(parseInt(initial));
-
-
+    //const { addItem } = useContext(CartContext);
+   
 
     const sumar = () => {
         setContar (contar + 1);
@@ -18,6 +19,9 @@ export function ItemCount ({stock, initial, onAdd}) {
 
     const anyadir = () => {
         onAdd(contar)
+
+
+
     }
 
     return (

@@ -4,10 +4,7 @@ const CartContext = React.createContext([]);
 
 const CartPorvider = ( {children} ) => {
 
-
-
     const [cart, setCart] = useState([]);
-
     const [totalIt, setTotalIt] = useState(0);
     const [totalSub, setTotalSub] = useState();
 
@@ -57,7 +54,7 @@ const CartPorvider = ( {children} ) => {
     }
 
     return <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart, totalIt, totalSub}}>
-        {JSON.stringify(cart)}
+       {/*  {JSON.stringify(cart)} */}
         {children} </CartContext.Provider>
 }
 

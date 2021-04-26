@@ -19,7 +19,7 @@ export const NavBar =() => {
                         <Link to='/' class="nav-link" > Inicio </Link>
                     </li>
                     <Link class="nav-item dropdown">
-                        <Link to='/categoria' class="nav-link dropdown-toggle"  id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Productos </Link>
+                        <Link to='/' class="nav-link dropdown-toggle"  id="navbarDropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Productos </Link>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown"  >
                             <Link to={`/categoria/indumentaria`} class="dropdown-item" > Indumentaria </Link>
                             <Link to={`/categoria/bazar`} class="dropdown-item"> Bazar </Link>

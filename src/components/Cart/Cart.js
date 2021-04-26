@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import {Link} from 'react-router-dom';
+import '../Cart/Cart.css' 
 import { CartContext } from '../../context/CartContext';
-
+import firebase from 'firebase/app';
 import {getFirestore, getFirebase} from '../../firebase';
 
 export const Cart = () => {
@@ -45,7 +46,7 @@ export const Cart = () => {
             //nueva lista de cosass
             const batch = db.batch()
 
-            for (const documento of resultado) {
+            for (const documento of resultado.docs) {
 
                 const actualStock = documento.data().stock;
                 const itemCarrito = cart.find(cartItem => cartItem.item.id == documento.id);
@@ -67,10 +68,10 @@ export const Cart = () => {
     }
 
 
-    if(totalIt===0) return( <h1 id="msg-cart">VACÍO<br/><Link to='/'>Ir a Home</Link></h1>)
+    if(totalIt===0) return( <h1 id="msg-cart">Tu carrito esta vacío <br/><Link to='/'>Ir a Home</Link></h1>)
         
     return (
-        <div>
+        <div className="carrito">
 
             {idOrder? `Compra realizada: ${idOrder}`: null}
 
@@ -80,7 +81,7 @@ export const Cart = () => {
                         <th style={{width:'500px'}} scope="col">Vista</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
-                        <th scope="col">Remove</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
             
@@ -89,39 +90,46 @@ export const Cart = () => {
 
                     {
                         cart.map(cartItem => (
-                            <div key={cartItem.item.id}>
-                            <tr>
-                                <td>
+                            
+                            <tr key={cartItem.item.id}>
+                                <td className='datos'>
                                     <h4>{cartItem.item.titulo}</h4>
                                     <img src={cartItem.item.imagen}  width="90" height="100" alt='imgItem'></img>
                                 </td>
-                                <td>{cartItem.quantity}</td>
-                                <td>{cartItem.quantity * cartItem.item.precio}</td>
-                                <td><button onClick={()=> removeItem(cartItem.item.id) }><Link>Eliminar</Link></button></td>
+                                <td>x{cartItem.cantidad}</td>
+                                <td>${cartItem.cantidad * cartItem.item.precio}</td>
+                                <td><button onClick={()=> removeItem(cartItem.item.id) }>Eliminar</button></td>
                             </tr>
-                            </div>
+                            
                             
                             
                         ))
                         
                     }
                 </tbody>
-
+                    
                 <thead>
+                <hr></hr>
                     <tr>
-                        <th>TOTAL</th>
+                        <th>TOTAL DE TUS PRODUCTOS</th>
                         <th>{totalIt}</th>
-                        <th>{totalSub}</th>
-                        <th onClick={clear}><Link>Borrar Todo</Link></th>
+                        <th>${totalSub}</th>
+                       
+                    </tr>
+                    <tr className='delete'>
+                        <th onClick={clear}><button>Borrar Todo</button></th>
                     </tr>
                 </thead>
 
-
-
             </table>
+
             <form Submit={keepOrder}>
+                <h4>Iniciar Compra</h4>
+                nombre
                 <input type="text" value={nombre} onChange={(e)=>setNombre(e.target.value)} ></input>
+                Teléfono
                 <input type="text" value={tel} onChange={(e)=>setTel(e.target.value)} ></input>
+                email
                 <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} ></input>
                 <button type="submit">¡COMPRAR!</button>
             </form>

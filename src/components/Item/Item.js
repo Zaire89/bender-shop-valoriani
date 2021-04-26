@@ -8,7 +8,7 @@ export const Item = ({producto}) => {
 
         <div className="tarjeta" >
             <div class="card-body column m-3">
-                <Link to={`/producto/${producto.id}`}>
+                <Link to={`/producto/${producto.id}`} className="link" style={{ textDecoration: 'none'}}>
                 
                     <div class="flex-column d-flex justify-content-around p-2 text-center" >
                         <h5 class="card-title">{producto.titulo}</h5>
@@ -19,10 +19,6 @@ export const Item = ({producto}) => {
                         <p class="card-text">${producto.precio}</p>
                     </div>
                 </Link>
-
-            
-        
-                
 
                 
             </div>

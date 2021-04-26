@@ -1,48 +1,54 @@
 import React, {useEffect, useState} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-
-import {getFirestore} from "../../firebase/index";
-
+import {getFirestore} from "../../firebase";
 import { useParams } from "react-router-dom";
 
 
-const getProductos = (id) => {
 
+const getProducto = (id) => {
     const db = getFirestore();
-    const itemsCollection = db.collection('producto');
- 
-    const itemId = itemsCollection.doc(id)
-    console.log(itemId)
-    return itemId.get();
-
+    const itemsCollection = db.collection('producto')
+    const item = itemsCollection.doc(id)
+    
+    return item.get();
 }
 
+
+
+
 const ItemDetailContainer = ()=> {
-    const [producto, getRep] = useState([])
-    const {itemId, otroId} = useParams()
-    console.log(itemId)
+    const [producto, setRep] = useState([]);
+    const {productoId} = useParams();
+    
+
+    
 
     useEffect(() => {
 
-        
-        getProductos(itemId).then((res)=> {
-            if (res.exists) {
-                getRep({id:res.id, ...res.data()})
+        getProducto(productoId).then((doc)=> {
+
+            if (doc.exists) {
+                console.log('existe?: ',doc.exists)
+                setRep({id:doc.id, ...doc.data()})
             }
-            console.log(itemId)
+            console.log({id:doc.id, ...doc.data()})
         })
         return;
-    }, [itemId])
+    
+    }, [productoId])
+
+    
 
     return (
         
         <div class="d-flex justify-content-center" >
-            {itemId} - {otroId}
-            <ItemDetail producto={producto} /> 
+            
+        
+            <ItemDetail producto={producto}/> 
         </div>
 
     );
-
+    
     
 };
 

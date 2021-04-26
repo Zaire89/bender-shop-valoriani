@@ -16,29 +16,23 @@ const ItemListContainer = (props) => {
 
     
     useEffect(() => {
+
+        let filtroCat
         // se conecta a la base de datos
         const db = getFirestore();
         //se guarda en esta variable, la coleccion q quiera
         const itemsCollection = db.collection('producto');
-     
         
-        // tomo los datos de esa colección
-        itemsCollection.get().then((value)=>{
-            let list = value.docs.map(element => {
-                return {...element.data(), id:element.id}
-            })
-            console.log(list)
-            setProductos(list)
-        })
-            
+        if (categoriaId){
+            filtroCat = itemsCollection .where('categoria', '==', categoriaId)
+        } else {
+            filtroCat = itemsCollection;
+        }
+
+            const filtrado = filtroCat.get();
 
 
-
-        const filtroCat = categoriaId ? itemsCollection.where('categoria', '==', categoriaId) : itemsCollection;
-
-        filtroCat.get().then((snapshot) => {
-            
-   
+        filtrado.then((snapshot)=>{
             if (snapshot.size > 0){
                 console.log(snapshot.docs.map(doc => doc.data()))
 
@@ -47,9 +41,9 @@ const ItemListContainer = (props) => {
                 }
                 ))
             }
-    
         })
         
+ 
          
       
     }, [categoriaId])

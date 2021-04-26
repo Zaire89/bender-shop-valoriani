@@ -7,4 +7,20 @@
 .iconify {
     height: 30px;
     width: 30px;
+    list-style: none;
+    color: white;
+}
+
+.numerito {
+    font-size: 20px;
+    color:white;
+    font-weight: 300;
+}
+
+.num {
+    color: rgb(255, 1, 1);
+    height: 25px;
+    width: 27px;
+    border-radius: 100%;
+
 }

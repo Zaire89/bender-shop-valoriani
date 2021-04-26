@@ -5,35 +5,35 @@ import ItemCount  from '../ItemCount/ItemCount';
 import { CartContext } from "../../context/CartContext";
 
 
-export default function ItemDetail({producto}) {
+
+const ItemDetail = ({producto}) => {
+    console.log(producto)
 
     const [contar, setContar] = useState(0);
     const {addItem} = useContext(CartContext);
 
 
 
-    const contador = (e) => {
-        console.log ('Hay' +  e  + 'productos agregados' )
-        setContar(e)
-    };
 
-    const agregarAlCarrito = () => {
+    const agregarAlCarrito = (contar) => {
         addItem(producto, contar)
+        setContar(contar)
     }
 
+    
 
 
     return(
-  
+        
+        
 
         <div class='d-flex justify-content-center' className="tarjeta-detalle">
                
             <tr>
                 <td class='text-center'>
                     <h1>{producto.titulo}</h1>
-                    <img src={producto.imagen} style={{height:"400px"}} />
+                    <img src={producto.imagen} style={{height:"250px"}} />
                     <p> Precio: $ {producto.precio}</p>
-
                 </td>
             </tr>
             
@@ -43,16 +43,19 @@ export default function ItemDetail({producto}) {
             FUNCION IF - ELSE  ------- un ternario (3partes: 1condicion IF - Resultado p eso - Opuesto ELSE con su Resultado  */}
             {
               contar == 0 ?
-                <ItemCount stock="15" initial="0" onAdd={contador} />
+                <ItemCount stock="15" initial="0" onAdd={agregarAlCarrito} />
              :
                 <div class="row d-flex justify-content-around pt-3" >
-                    <Link to='/cart'>< button className="btn btn-secondary" type="button" onClick={agregarAlCarrito}> Finalizar Compra </button></Link>
+                    <Link to='/cart'>< button className="btn btn-secondary" type="button" > Finalizar Compra </button></Link>
                 </div>
             }
             
             
         </div>
-    )
+    );
 
 
-}
+};
+
+
+export default ItemDetail;
