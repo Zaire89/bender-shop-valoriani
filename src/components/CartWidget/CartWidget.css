@@ -1,7 +1,9 @@
 #icon-cart {
     color: aliceblue;
     padding-left: 18px;
-    padding-top: 8px;
+    padding-top: 15px;
+    flex-direction: column;
+    margin:20px;
 }
 
 .iconify {
@@ -9,18 +11,31 @@
     width: 30px;
     list-style: none;
     color: white;
+    position: relative;
+    z-index: 3;
 }
 
 .numerito {
-    font-size: 20px;
-    color:white;
-    font-weight: 300;
+    color: black;
+    font-weight: 600 !important;
+    position: absolute;
+    z-index: 2; right: 8px;
 }
 
 .num {
-    color: rgb(255, 1, 1);
+    background-color: rgb(255, 175, 71);
     height: 25px;
-    width: 27px;
+    width: 25px;
+    margin: auto;
     border-radius: 100%;
+    justify-content:center;
+    align-items: center;
+    position: absolute;
+    z-index: 1; right: 50px; top: 12px;
+}
 
+.precio-widget {
+    font-size: 16px;
+    color: rgb(255, 175, 71);
+   
 }

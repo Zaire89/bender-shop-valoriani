@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import '../Cart/Cart.css' 
 import { CartContext } from '../../context/CartContext';
 import firebase from 'firebase/app';
+import 'firebase/firestore';
 import {getFirestore, getFirebase} from '../../firebase';
 
 export const Cart = () => {
@@ -11,24 +12,24 @@ export const Cart = () => {
     const [nombre, setNombre] = useState('')
     const [tel, setTel] = useState('')
     const [email, setEmail] = useState('')
-
     const [idOrder, setIdOrder] = useState(null)
-
     const { cart, totalIt, totalSub, removeItem, clear } = useContext(CartContext);
 
     
     const keepOrder = (e) => {
         e.preventDefault();
         const buuuyer = {nombre, tel, email}
-
         console.log(buuuyer)
 
+        
         const db = getFirestore();
         const ordersCollection = db.collection("orders")
 
-        const fecha = getFirestore().firestore.Timestamp.fromDate(new Date());
-        const items = cart.map(cartItem => {
-            return {id: cartItem.id, titulo: cartItem.titulo, precio: cartItem.precio}
+        const fecha =  firebase.firestore.Timestamp.fromDate(new Date());
+        const items = cart.map((cartItem) => {
+            return {id: cartItem.item.id,
+                    titulo: cartItem.item.titulo,
+                    precio: cartItem.item.precio};
         });
 
         ordersCollection
@@ -39,28 +40,6 @@ export const Cart = () => {
         })
 
 
-        const itemsCollection =db.collection('producto')
-        .where(getFirebase().firestore.FieldPath.documentId(), 'in', cart.map(e => e.item.id))
-
-        itemsCollection.get().then(resultado =>{
-            //nueva lista de cosass
-            const batch = db.batch()
-
-            for (const documento of resultado.docs) {
-
-                const actualStock = documento.data().stock;
-                const itemCarrito = cart.find(cartItem => cartItem.item.id == documento.id);
-                const cantidadElegida = itemCarrito.quantity;
-                const nuevoStock = actualStock - cantidadElegida;
-
-                //actualizacion de lista
-                batch.update(documento.ref,
-                    {stock: nuevoStock}
-                )
-            }
-            //subir la nueva lista
-            batch.commit()
-        })
 
 
 
@@ -73,7 +52,7 @@ export const Cart = () => {
     return (
         <div className="carrito">
 
-            {idOrder? `Compra realizada: ${idOrder}`: null}
+            
 
             <table>
                 <thead>
@@ -87,7 +66,7 @@ export const Cart = () => {
             
 
                 <tbody>
-
+                   
                     {
                         cart.map(cartItem => (
                             
@@ -98,7 +77,7 @@ export const Cart = () => {
                                 </td>
                                 <td>x{cartItem.cantidad}</td>
                                 <td>${cartItem.cantidad * cartItem.item.precio}</td>
-                                <td><button onClick={()=> removeItem(cartItem.item.id) }>Eliminar</button></td>
+                                <td><button className="button-cart" onClick={()=> removeItem(cartItem.item.id) }>Eliminar</button></td>
                             </tr>
                             
                             
@@ -117,13 +96,19 @@ export const Cart = () => {
                        
                     </tr>
                     <tr className='delete'>
-                        <th onClick={clear}><button>Borrar Todo</button></th>
+                        <th onClick={clear}><button className="button-cart">Borrar Todo</button></th>
                     </tr>
                 </thead>
 
             </table>
+            
+            
+            <form action="" onSubmit={keepOrder}>
+            
+                <h5 className="orrrden">
+                    {idOrder? `Gracias por tu compra! Nº de orden: ${idOrder}`: null}
+                </h5>
 
-            <form Submit={keepOrder}>
                 <h4>Iniciar Compra</h4>
                 nombre
                 <input type="text" value={nombre} onChange={(e)=>setNombre(e.target.value)} ></input>
@@ -131,7 +116,7 @@ export const Cart = () => {
                 <input type="text" value={tel} onChange={(e)=>setTel(e.target.value)} ></input>
                 email
                 <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} ></input>
-                <button type="submit">¡COMPRAR!</button>
+                <button className="button-cart" type="submit">¡COMPRAR!</button>
             </form>
         </div>
     )

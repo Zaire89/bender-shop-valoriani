@@ -34,8 +34,13 @@ form input {
     margin-bottom: 15px;
 }
 
-button {
+.button-cart {
     margin-top: 15px;
     padding-bottom: 10px;
     align-items: center;
+}
+
+
+h5 {
+    color: rgb(255, 145, 0);
 }

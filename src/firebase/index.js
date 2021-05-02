@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+
 const app = firebase.initializeApp ({
     apiKey: "AIzaSyB63ly_Oj3EN4xMKDsFlJbl2Ga6c4epzUo",
     authDomain: "ecommerce-bender.firebaseapp.com",

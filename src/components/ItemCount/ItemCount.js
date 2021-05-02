@@ -28,14 +28,14 @@ export function ItemCount ({stock, initial, onAdd}) {
         
         <div >
                         
-                <div class="row d-flex justify-content-around mt-2" >
+                <div class="row d-flex justify-content-center mt-2" >
 
                     <button disabled={contar <= 0}
                     className="btn btn-dark"
                     type="button"
                     onClick={restar}> - </button>
 
-                    <div><b>{contar}</b></div>
+                    <div class="pr-2 pl-2"><b>{contar}</b></div>
                     
                     <button disabled={contar >= stock}
                     className="btn btn-dark"
@@ -44,7 +44,7 @@ export function ItemCount ({stock, initial, onAdd}) {
 
                 </div>
 
-                <div  class="row d-flex justify-content-around pt-3" >
+                <div  class="row d-flex justify-content-around pt-3 mb-4" >
                     <button className="btn btn-secondary w-75"
                     type="button" disabled={contar < 1 || contar >= stock} onClick={anyadir} 
                     > Agregar  <span class="iconify" data-icon="icons8:buy" data-inline="false" id="carAnimate"></span></button>

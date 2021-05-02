@@ -2,5 +2,16 @@
     height: auto;
     width: 800px;
     background-color: antiquewhite;
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 25px;
+    font-family: 'ABeeZee', sans-serif;
 }
 
+.img-producto:hover {
+    transition: transform .2s; 
+    transform: scale(2.5); 
+}

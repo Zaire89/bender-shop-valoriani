@@ -32,8 +32,9 @@ const ItemDetail = ({producto}) => {
             <tr>
                 <td class='text-center'>
                     <h1>{producto.titulo}</h1>
-                    <img src={producto.imagen} style={{height:"250px"}} />
-                    <p> Precio: $ {producto.precio}</p>
+                    
+                    <img className="img-producto" src={producto.imagen} style={{height:"250px"}} />
+                    <p class="pt-4"> Precio: $ {producto.precio}</p>
                 </td>
             </tr>
             
@@ -45,7 +46,7 @@ const ItemDetail = ({producto}) => {
               contar == 0 ?
                 <ItemCount stock="15" initial="0" onAdd={agregarAlCarrito} />
              :
-                <div class="row d-flex justify-content-around pt-3" >
+                <div class="row d-flex justify-content-around pt-3 mb-4" >
                     <Link to='/cart'>< button className="btn btn-secondary" type="button" > Finalizar Compra </button></Link>
                 </div>
             }
