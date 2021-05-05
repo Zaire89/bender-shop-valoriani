@@ -25,6 +25,20 @@ También se puede clickear en la lupita para ver detalles de la imagen.
  Por último, un formulario para concretar el pedido, con los datos del usuario y enviar la orden a nuestra base de datos.
  Enviada la orden, se limpia el carrito y se le devuelve en pantalla el código de orden al usuario.
  
+ 
+ 
+
+
+https://user-images.githubusercontent.com/68509735/117208838-f9739500-adcb-11eb-913b-f80495bd3965.mp4
+
+
+
+
+
+
+
+
+ 
  ------------------------------------------------
  
 #### Install:
