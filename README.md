@@ -1,4 +1,4 @@
-# Bender-SHOP 
+# Bender e-commerce
 
 ## Tienda online de productos BenederAO. 
 Juego Online http://bender-online.com.ar/
