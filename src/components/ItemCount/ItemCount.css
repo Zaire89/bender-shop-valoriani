@@ -5,7 +5,7 @@
 
 }
 
-#carAnimate {
+#carAnimate:hover {
     
     animation: clickeado 1s  linear;
     animation-iteration-count: 3; /* dps borrar */

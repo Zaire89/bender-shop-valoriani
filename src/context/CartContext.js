@@ -54,7 +54,6 @@ const CartPorvider = ( {children} ) => {
     }
 
     return <CartContext.Provider value={{cart, addItem, removeItem, clear, isInCart, totalIt, totalSub}}>
-       {/*  {JSON.stringify(cart)} */}
         {children} </CartContext.Provider>
 }
 

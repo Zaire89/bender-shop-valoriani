@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../ItemDetail/ItemDetail.css';
 import ItemCount  from '../ItemCount/ItemCount';
 import { CartContext } from "../../context/CartContext";
+import Loader  from 'react-loader-spinner';
+import InnerImageZoom from 'react-inner-image-zoom'
 
 
 
@@ -31,20 +33,24 @@ const ItemDetail = ({producto}) => {
                
             <tr>
                 <td class='text-center'>
+                    
                     <h1>{producto.titulo}</h1>
                     
-                    <img className="img-producto" src={producto.imagen} style={{height:"250px"}} />
+                    <Loader type="TailSpin" color="rgb(248, 214, 151)" height={50} width={50} timeout="500" />
+                    <InnerImageZoom className="img-producto" src={producto.imagen} style={{height:"250px"}} />
+   
                     <p class="pt-4"> Precio: $ {producto.precio}</p>
+                                     
+                    <p  class='text-center'> {producto.descripcion} </p>
                 </td>
             </tr>
             
           
 
-            {/*  llaves = avisa q es Javascript 
-            FUNCION IF - ELSE  ------- un ternario (3partes: 1condicion IF - Resultado p eso - Opuesto ELSE con su Resultado  */}
+
             {
               contar == 0 ?
-                <ItemCount stock="15" initial="0" onAdd={agregarAlCarrito} />
+                <ItemCount stock={producto?.stock} initial="0" onAdd={agregarAlCarrito} />
              :
                 <div class="row d-flex justify-content-around pt-3 mb-4" >
                     <Link to='/cart'>< button className="btn btn-secondary" type="button" > Finalizar Compra </button></Link>

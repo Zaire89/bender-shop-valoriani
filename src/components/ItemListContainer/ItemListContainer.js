@@ -18,9 +18,7 @@ const ItemListContainer = (props) => {
     useEffect(() => {
 
         let filtroCat
-        // se conecta a la base de datos
         const db = getFirestore();
-        //se guarda en esta variable, la coleccion q quiera
         const itemsCollection = db.collection('producto');
         
         if (categoriaId){
@@ -53,11 +51,11 @@ const ItemListContainer = (props) => {
 
     return (
         
-        <div class="container-fluid">
+        <div>
             
-            <h1> {props.presenta} </h1>
-            <h2> {categoriaId} </h2>
-            <div class="d-flex justify-content-center">
+            <h1> {props.presenta} {categoriaId} </h1>
+           
+            <div  class="container-fluid row">
                 <ItemList producto={producto}/>
             </div>
 

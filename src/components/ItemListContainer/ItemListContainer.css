@@ -1,7 +1,8 @@
 h1 {
     font-family: 'ABeeZee', sans-serif;
-    font-style: oblique;
+    font-weight: 900;
     text-align: center;
-    padding-top: 18px;
+    padding-top: 35px;
+    text-transform: uppercase;
 }
 

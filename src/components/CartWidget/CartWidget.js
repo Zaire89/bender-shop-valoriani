@@ -11,14 +11,14 @@ const CartWidget = () => {
 
     return (
         
-        <div id="icon-cart" class="btn my-2 my-sm-0 my-lg-0" >
+        <div id="div-icon-cart" class="btn d-flex justify-content-center" >
             {totalIt?  
             <div className="num">
                 <i className="numerito">{totalIt}</i> 
             </div> 
             : null}
             
-            <Link to = '/cart' ><span class="iconify" data-icon="bi:cart-fill" data-inline="false" ></span></Link>
+            <Link to = '/cart' ><span class="iconify" data-icon="bi:cart-fill" data-inline="false" id="iconify-cart" ></span></Link>
             <div  className="precio-widget">
               {totalSub? <i>${totalSub}</i> : null }
             </div>

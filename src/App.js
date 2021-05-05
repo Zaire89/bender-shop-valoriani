@@ -11,7 +11,7 @@ function App() {
 
 
 
-    <BrowserRouter>
+    <BrowserRouter  class="container-fluid">
 
       <CartPorvider> 
         <div className="App">
@@ -21,15 +21,15 @@ function App() {
           <Switch>
             <Route exact path='/'>
               <div class="d-flex justify-content-center">
-              Home animacion logo
-              <ItemListContainer/>
+              
+              <ItemListContainer presenta="Nuestros Productos!"/>
               </div>
               
             </Route>
 
             <Route path='/categoria/:categoriaId'>
-              <div class="row justify-content-around ">
-                <ItemListContainer presenta="Nuestros Productos!"/>
+              <div class="container  m-l auto m-r auto">
+                <ItemListContainer />
               </div>
             </Route>
             
