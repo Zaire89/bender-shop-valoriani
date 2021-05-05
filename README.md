@@ -5,7 +5,7 @@ Juego Online http://bender-online.com.ar/
 
 ------------------------------------------------
 
-### Para iniciar:
+### Recorrido:
 
 * Se ve el Home del e-commerce con todos los productos en stock.
 
@@ -27,7 +27,7 @@ También se puede clickear en la lupita para ver detalles de la imagen.
  
  ------------------------------------------------
  
- 
+#### Install:
 Proyecto realizado con CREATE REACT APP (https://github.com/facebook/create-react-app).
 
 Este sitio utiliza framework Bootstrap "https://getbootstrap.com".
